@@ -18,7 +18,7 @@ def index(request):
 index_url = reverse_lazy("api-1.0.0:index")
 ```
 
-This implicit URL name will only be set for the first operation for each API path.  If you *don't* want any implicit reverse URL name generated, just explicitly specify `url_name=""` (an empty string) on the method decorator.
+This implicit URL name will only be set for the first operation for each API path.
 
 ### Changing the URL name
 
@@ -33,19 +33,6 @@ users_url = reverse_lazy("api-1.0.0:user_list")
 ```
 
 This will override any implicit URL name to this API path.
-
-
-#### Overriding default url names
-
-You can also override implicit url naming by overwriting the `get_operation_url_name` method:
-
-```Python
-class MyAPI(NinjaAPI):
-    def get_operation_url_name(self, operation, router):
-        return operation.view_func.__name__ + '_my_extra_suffix'
-
-api = MyAPI()
-```
 
 ### Customizing the namespace
 
